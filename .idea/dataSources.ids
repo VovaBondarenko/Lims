@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - testdb@localhost" uuid="74115d13-7b78-4b68-9ad2-4c47249f9579">
+    <database-info product="MySQL" version="5.7.11-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
+      <schema id="1" name="testdb"/>
+      <table id="2" parent="1" name="exp1"/>
+      <table id="3" parent="1" name="group_authorities"/>
+      <table id="4" parent="1" name="group_members"/>
+      <table id="5" parent="1" name="groups"/>
+      <table id="6" parent="1" name="persistent_logins"/>
+      <table id="7" parent="1" name="users"/>
+      <column id="8" parent="2" name="id_note">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="9" parent="2" name="user">
+        <mandatory>1</mandatory>
+        <data-type>varchar(128)</data-type>
+      </column>
+      <column id="10" parent="2" name="material1">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="11" parent="2" name="material2">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="12" parent="2" name="material3">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <index id="13" parent="2" name="foregn_key_idx">
+        <columns>user</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="14" parent="2" name="PRIMARY">
+        <columns>id_note</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="15" parent="2" name="foregn_key">
+        <columns>user</columns>
+        <ref-key>~.users.username_UNIQUE</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="16" parent="3" name="id_post">
+        <mandatory>1</mandatory>
+        <data-type>int(128)</data-type>
+      </column>
+      <column id="17" parent="3" name="group_id">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20) unsigned</data-type>
+      </column>
+      <column id="18" parent="3" name="authority">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="19" parent="3" name="id_roll">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="20" parent="3" name="roll">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <index id="21" parent="3" name="fk_group_idx">
+        <columns>group_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="22" parent="3" name="id_post_UNIQUE">
+        <columns>id_post</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="23" parent="3" name="id_post_UNIQUE">
+        <columns>id_post</columns>
+        <underlying-index>id_post_UNIQUE</underlying-index>
+      </key>
+      <key id="24" parent="3" name="PRIMARY">
+        <columns>id_post</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="25" parent="3" name="fk_group">
+        <columns>group_id</columns>
+        <ref-key>~.groups.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="26" parent="4" name="id">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20) unsigned</data-type>
+      </column>
+      <column id="27" parent="4" name="username">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="28" parent="4" name="group_id">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20) unsigned</data-type>
+      </column>
+      <column id="29" parent="4" name="members_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="30" parent="4" name="group_id">
+        <columns>group_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="31" parent="4" name="group_members_users_username_fk">
+        <columns>username</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="32" parent="4" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="33" parent="4" name="group_members_ibfk_1">
+        <columns>group_id</columns>
+        <ref-key>~.groups.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="34" parent="4" name="group_members_users_username_fk">
+        <columns>username</columns>
+        <ref-key>~.users.username_UNIQUE</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="35" parent="5" name="id">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20) unsigned</data-type>
+      </column>
+      <column id="36" parent="5" name="group_name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="37" parent="5" name="group_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="38" parent="5" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="39" parent="6" name="username">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="40" parent="6" name="series">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="41" parent="6" name="token">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="42" parent="6" name="last_used">
+        <mandatory>1</mandatory>
+        <data-type>timestamp</data-type>
+        <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
+      </column>
+      <key id="43" parent="6" name="PRIMARY">
+        <columns>series</columns>
+        <primary>1</primary>
+      </key>
+      <column id="44" parent="7" name="id_user">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="45" parent="7" name="username">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="46" parent="7" name="password">
+        <mandatory>1</mandatory>
+        <data-type>varchar(168)</data-type>
+      </column>
+      <column id="47" parent="7" name="enabled">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+        <default-expression>&apos;1&apos;</default-expression>
+      </column>
+      <index id="48" parent="7" name="id_user_UNIQUE">
+        <columns>id_user</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="49" parent="7" name="username_UNIQUE">
+        <columns>username</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="50" parent="7" name="id_user_UNIQUE">
+        <columns>id_user</columns>
+        <underlying-index>id_user_UNIQUE</underlying-index>
+      </key>
+      <key id="51" parent="7" name="PRIMARY">
+        <columns>id_user
+username</columns>
+        <primary>1</primary>
+      </key>
+      <key id="52" parent="7" name="username_UNIQUE">
+        <columns>username</columns>
+        <underlying-index>username_UNIQUE</underlying-index>
+      </key>
+    </database-model>
+  </data-source>
+</component>
